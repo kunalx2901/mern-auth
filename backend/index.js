@@ -14,3 +14,14 @@ app.listen(3000, (req, res) => {
 
 app.use("/api/user" , userRoutes)
 app.use("/api/auth" , authRoutes)
+
+app.use((err,req,res,next)=>{
+	
+	const statuscode = err.statuscode || 500
+	const message = err.message || "INTERNAL SERVER ERROR"
+
+	return res.json({
+		statuscode,
+		message
+	})
+})

@@ -1,7 +1,8 @@
 
 import User from "../models/user.model.js"
 import bcryptjs from "bcryptjs"
-export const auth = async (req , res)=>{
+import { errorHandler } from "../utilis/error.js"
+export const auth = async (req , res ,next)=>{
 	// console.log(req.body)
 
     const {username , password , email} = req.body
@@ -14,10 +15,7 @@ export const auth = async (req , res)=>{
         })        
     }
     catch(err){
-        res.status(500).json({
-            msg: err
-        })
-
+        next(errorHandler(500 , "something went wrong !"))
     }
 
 }
