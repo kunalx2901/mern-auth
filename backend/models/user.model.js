@@ -20,11 +20,11 @@ const userSchema = new mongoose.Schema({
         required:true,
         unique:true
     },
-    pasword:{
+    password:{
         type:String,
         required:true,
     }
-})
+}, {timestamp:true})
 
 const User = mongoose.model("User" ,userSchema)
 

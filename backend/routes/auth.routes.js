@@ -1,8 +1,8 @@
 import express from "express"
-import {user} from "../controller/user.controller.js"
+import {auth} from "../controller/auth.controller.js"
 
 const router = express.Router()
 
-router.get("/" , user)
+router.post("/signup" , auth)
 
 export default router
